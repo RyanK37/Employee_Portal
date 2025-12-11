@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Chat — Employee Portal</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar card">
+      <div class="logo">Employee Portal</div>
+      <a href="profile.html" class="nav-item">🏠 Dashboard</a>
+      <a href="chat.html" class="nav-item">💬 Chat</a>
+      <a href="login.html" class="nav-item" id="nav-logout-2">🔒 Logout</a>
+    </aside>
+
+    <main class="header">
+      <div class="topbar card">
+        <div>
+          <strong>Chat</strong>
+          <div class="small-muted">Public & Private messaging</div>
+        </div>
+        <div class="profile-mini">
+          <img id="topAvatarChat" src="../css/placeholder-avatar.png" alt="avatar">
+          <div>
+            <div id="topNameChat">Loading...</div>
+            <div class="small-muted" id="topEmailChat"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <section style="flex: 0.65" class="card">
+          <h3>Conversation</h3>
+          <div id="messages" class="messages"></div>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="messageInput" placeholder="Type a message..." style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6e9ef">
+            <button id="sendBtn" class="btn">Send</button>
+          </div>
+        </section>
+
+        <aside style="flex: 0.35" class="card">
+          <h3>Users</h3>
+          <div id="usersList" class="user-list"></div>
+          <hr style="margin:12px 0">
+          <div class="small-muted">Tip: Click a user to start private chat</div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script src="../js/firebaseConfig.js"></script>
+  <script src="../js/chat.js"></script>
+</body>
+</html>
