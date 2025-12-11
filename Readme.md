@@ -11,7 +11,7 @@ HTML/CSS/JS employee portal served via Firebase Hosting with Auth and Firestore 
 
 ## Project layout
 - `public/html/`: entry pages (`index.html`, `login.html`, `signup.html`, `profile.html`, `chat.html`)
-- `public/js/`: Firebase config plus auth, dashboard (announcements/leave/profile), and chat logic
+- `public/js/`: Firebase configuration with auth, dashboard (announcements/leave/profile), and chat logic
 - `public/css/styles.css`: shared styling/theme
 - `public/assets/`: static assets (e.g., placeholder avatar)
 
@@ -37,9 +37,7 @@ firebase.initializeApp(firebaseConfig);
 
 ## Run locally
 ```bash
-firebase emulators:start --only hosting,firestore,auth
-# or
-firebase serve --only hosting
+firebase serve 
 ```
 Open http://localhost:5000/html/login.html (or `/html/index.html`) once the server starts.
 
@@ -59,5 +57,5 @@ Admins see the announcement composer and pending leave approvals in `profile.htm
 ## Deploy
 Deploy to Firebase Hosting once configured:
 ```bash
-firebase deploy --only hosting
+firebase deploy 
 ```
