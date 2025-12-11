@@ -1,10 +1,7 @@
+
+
+
 {
-  "firestore": {
-    "database": "(default)",
-    "location": "eur3",
-    "rules": "git pull origin master --allow-unrelated-histories",
-    "indexes": "firestore.indexes.json"
-  },
   "hosting": {
     "public": "public",
     "ignore": [
@@ -12,14 +9,16 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "cleanUrls": true,
     "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
+      { "source": "/",        "destination": "/html/index.html" },
+      { "source": "/index.html", "destination": "/html/index.html" },
+      { "source": "/feed",    "destination": "/html/feed.html" },
+      { "source": "/login",   "destination": "/html/login.html" },
+      { "source": "/signup",  "destination": "/html/signup.html" },
+      { "source": "/profile", "destination": "/html/profile.html" },
+      { "source": "/chat",    "destination": "/html/chat.html" }
     ]
-  },
-  "storage": {
-    "rules": "storage.rules"
   }
 }
+
