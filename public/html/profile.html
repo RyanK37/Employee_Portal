@@ -8,22 +8,22 @@
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar card">
+    <aside class="sidebar">
       <div class="logo">Employee Portal</div>
-      <a href="profile.html" class="nav-item">🏠 Dashboard</a>
-      <a href="chat.html" class="nav-item">💬 Chat</a>
-      <a href="login.html" class="nav-item" id="nav-logout">🔒 Logout</a>
-      <div style="margin-top:auto;font-size:12px;color:var(--muted)">v1.0 • Professional</div>
+      <a href="profile.html" class="nav-item active">Dashboard</a>
+      <a href="chat.html" class="nav-item">Chat</a>
+      <a href="login.html" class="nav-item" id="nav-logout">Logout</a>
+      <div class="nav-footnote">v1.0 - Internal</div>
     </aside>
 
     <main class="header">
       <div class="topbar card">
         <div>
           <strong>Dashboard</strong>
-          <div class="small-muted">Welcome — announcements & requests</div>
+          <div class="small-muted">Announcements, updates, and leave management</div>
         </div>
         <div class="profile-mini">
-          <img id="topAvatar" src="../css/placeholder-avatar.png" alt="avatar">
+          <img id="topAvatar" src="../assets/placeholder-avatar.svg" alt="avatar">
           <div>
             <div id="topName">Loading...</div>
             <div class="small-muted" id="topEmail"></div>
@@ -31,20 +31,18 @@
         </div>
       </div>
 
-      <div class="page-content" style="align-items:flex-start;">
-        <section style="flex: 0.9" class="card">
-          <!-- Announcements header -->
+      <div class="page-content">
+        <section class="card section">
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <div>
               <h3>Announcements</h3>
-              <div class="small-muted">Company-wide posts — like & comment</div>
+              <div class="small-muted">Share wins, plans, and action items with everyone</div>
             </div>
             <div id="adminControls" style="display:none">
               <button class="btn" id="openComposer">New Announcement</button>
             </div>
           </div>
 
-          <!-- Composer (admin) -->
           <div id="composerWrap" style="margin-top:12px;display:none" class="announce-composer card">
             <input id="announceTitle" placeholder="Announcement title">
             <textarea id="announceBody" rows="4" placeholder="Write your announcement..."></textarea>
@@ -54,64 +52,92 @@
             </div>
           </div>
 
-          <!-- Announcements list -->
           <div id="announcements" class="announcements" style="margin-top:12px">
-            <!-- announcements dynamically inserted here -->
           </div>
         </section>
 
-        <aside style="flex: 0.45" class="card">
-          <h3>Leave Requests</h3>
-
-          <!-- Leave request form -->
-          <div class="leave-card">
-            <div class="field">
-              <label>Type</label>
-              <select id="leaveType">
-                <option value="annual">Annual Leave</option>
-                <option value="sick">Sick Leave</option>
-                <option value="other">Other</option>
-              </select>
+        <div class="stack">
+          <section class="card section">
+            <h3>Profile</h3>
+            <div style="display:flex;align-items:center;gap:12px;margin:10px 0 14px 0">
+              <img id="profileAvatar" src="../assets/placeholder-avatar.svg" alt="avatar" style="width:64px;height:64px;border-radius:14px;object-fit:cover;border:1px solid var(--border)">
+              <div>
+                <div id="profileNameDisplay" style="font-weight:700;">Your name</div>
+                <div class="small-muted" id="profileEmailDisplay"></div>
+              </div>
             </div>
             <div class="field">
-              <label>From</label>
-              <input type="date" id="leaveFrom">
+              <label>Photo</label>
+              <input type="file" id="profilePhoto" accept="image/*">
             </div>
             <div class="field">
-              <label>To</label>
-              <input type="date" id="leaveTo">
+              <label>Full name</label>
+              <input type="text" id="profileName" placeholder="Jane Doe">
             </div>
-            <div class="field">
-              <label>Reason</label>
-              <textarea id="leaveReason" rows="3"></textarea>
+            <div class="split">
+              <div class="field">
+                <label>Job title</label>
+                <input type="text" id="profileJob" placeholder="Product Designer">
+              </div>
+              <div class="field">
+                <label>Phone</label>
+                <input type="text" id="profilePhone" placeholder="+1 555 123 4567">
+              </div>
             </div>
-            <div>
-              <button id="submitLeave" class="btn">Submit Request</button>
+            <button id="saveProfile" class="btn" style="margin-top:10px;">Save profile</button>
+          </section>
+
+          <section class="card section">
+            <h3>Leave Requests</h3>
+
+            <div class="leave-card">
+              <div class="field">
+                <label>Type</label>
+                <select id="leaveType">
+                  <option value="annual">Annual Leave</option>
+                  <option value="sick">Sick Leave</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="split">
+                <div class="field">
+                  <label>From</label>
+                  <input type="date" id="leaveFrom">
+                </div>
+                <div class="field">
+                  <label>To</label>
+                  <input type="date" id="leaveTo">
+                </div>
+              </div>
+              <div class="field">
+                <label>Reason</label>
+                <textarea id="leaveReason" rows="3" placeholder="Quick context helps managers approve faster"></textarea>
+              </div>
+              <div>
+                <button id="submitLeave" class="btn">Submit Request</button>
+              </div>
             </div>
-          </div>
 
-          <hr style="margin:12px 0">
+            <hr style="margin:12px 0">
 
-          <h4>Your Requests</h4>
-          <div id="yourRequests" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
-          
-          </div>
+            <h4>Your Requests</h4>
+            <div id="yourRequests" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            </div>
 
-          <div id="pendingApprovalsWrap" style="margin-top:12px;display:none">
-            <h4>Pending Approvals</h4>
-            <div id="pendingApprovals" style="display:flex;flex-direction:column;gap:8px"></div>
-          </div>
-        </aside>
+            <div id="pendingApprovalsWrap" style="margin-top:12px;display:none">
+              <h4>Pending Approvals</h4>
+              <div id="pendingApprovals" style="display:flex;flex-direction:column;gap:8px"></div>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
   </div>
 
-  <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-  <!-- App scripts -->
   <script src="../js/firebaseConfig.js"></script>
   <script src="../js/dashboard.js"></script>
 </body>
