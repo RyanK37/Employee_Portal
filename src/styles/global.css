@@ -1,0 +1,216 @@
+:root {
+  --purple: #2f6b4f;
+  --purple-light: #e7f1eb;
+  --purple-mid: #b3c9bb;
+  --purple-dark: #18382a;
+  --purple-deeper: #0f261b;
+  --teal: #3e7d63;
+  --teal-light: #e4efe8;
+  --teal-dark: #1c4c38;
+  --blue: #70817a;
+  --blue-light: #eff3f0;
+  --blue-dark: #3c4a44;
+  --amber: #8b7b3f;
+  --amber-light: #f1eddc;
+  --amber-dark: #5b4e20;
+  --red: #a32d2d;
+  --red-light: #fcebeb;
+  --green: #4d7d54;
+  --green-light: #e6efe7;
+  --coral: #486a57;
+  --coral-light: #e6ece8;
+  --bg: #f5f7f4;
+  --surface: #ffffff;
+  --surface2: #eef2ee;
+  --border: rgba(47, 107, 79, 0.1);
+  --border-strong: rgba(47, 107, 79, 0.18);
+  --text: #1e2a23;
+  --text2: #5e6b63;
+  --text3: #8a948e;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --font: 'DM Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --shadow: 0 1px 3px rgba(24, 40, 31, 0.06), 0 6px 18px rgba(24, 40, 31, 0.05);
+  --shadow-md: 0 4px 12px rgba(24, 40, 31, 0.08), 0 14px 30px rgba(24, 40, 31, 0.08);
+}
+
+:root[data-theme='dark'] {
+  --purple-light: #203126;
+  --purple-mid: #759381;
+  --purple-dark: #d9e6de;
+  --purple-deeper: #f2f7f4;
+  --teal-light: rgba(62, 125, 99, 0.18);
+  --blue-light: rgba(112, 129, 122, 0.18);
+  --amber-light: rgba(139, 123, 63, 0.18);
+  --red-light: rgba(163, 45, 45, 0.18);
+  --green-light: rgba(77, 125, 84, 0.18);
+  --coral-light: rgba(72, 106, 87, 0.2);
+  --bg: #101713;
+  --surface: #18211c;
+  --surface2: #1f2a24;
+  --border: rgba(233, 241, 236, 0.08);
+  --border-strong: rgba(179, 201, 187, 0.22);
+  --text: #f2f6f3;
+  --text2: #c3d0c8;
+  --text3: #87948d;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.32);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html,
+body,
+#root { min-height: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button { cursor: pointer; font-family: var(--font); }
+input,
+select,
+textarea { font-family: var(--font); }
+a { color: inherit; text-decoration: none; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--purple-mid); border-radius: 4px; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+.scale-in { animation: scaleIn 0.25s ease forwards; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: var(--purple);
+  color: #fff;
+  transition: opacity 0.15s, transform 0.1s, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover { opacity: 0.88; }
+.btn:active { transform: scale(0.98); }
+
+.btn.secondary {
+  background: var(--surface);
+  color: var(--purple);
+  border: 1px solid var(--border-strong);
+}
+
+.btn.secondary:hover { background: var(--purple-light); }
+.btn.danger { background: var(--red-light); color: var(--red); border: 1px solid color-mix(in srgb, var(--red) 28%, var(--border)); }
+.btn.success { background: var(--green-light); color: var(--green); border: 1px solid color-mix(in srgb, var(--green) 28%, var(--border)); }
+.btn.sm { padding: 5px 11px; font-size: 12px; }
+.btn.lg { padding: 11px 22px; font-size: 14px; }
+.btn:disabled { opacity: 0.45; pointer-events: none; }
+
+.input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.2s ease, color 0.2s ease;
+}
+
+.input:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(47, 107, 79, 0.12); }
+.input::placeholder { color: var(--text3); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.mbti-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.mood-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-size: 11px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pill.green { background: var(--green-light); color: var(--green); }
+.pill.amber { background: var(--amber-light); color: var(--amber-dark); }
+.pill.red { background: var(--red-light); color: var(--red); }
+.pill.purple { background: var(--purple-light); color: var(--purple-dark); }
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--purple-light);
+  border-top-color: var(--purple);
+  animation: spin 0.7s linear infinite;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 10px;
+}
+
+.stat-card {
+  background: var(--surface2);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  transition: background-color 0.2s ease;
+}
+
+.stat-card .val { font-size: 22px; font-weight: 600; color: var(--text); }
+.stat-card .lbl { font-size: 11px; color: var(--text3); margin-bottom: 3px; }
+.stat-card .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }

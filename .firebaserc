@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "employeeportal-23a05"
-  }
+    "prod": "employee-portal-v2-bbe68"
+  },
+  "targets": {},
+  "etags": {}
 }

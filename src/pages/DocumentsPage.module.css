@@ -1,0 +1,33 @@
+.page { display: flex; flex-direction: column; gap: 14px; }
+.toolbar { display: flex; align-items: center; gap: 10px; }
+.errorBanner {
+  background: var(--red-light);
+  border: 1px solid color-mix(in srgb, var(--red) 28%, var(--border));
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--red);
+}
+.list { display: flex; flex-direction: column; gap: 8px; }
+.emptyState {
+  background: var(--surface);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  padding: 24px 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text3);
+}
+.docRow {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 11px 14px;
+  box-shadow: var(--shadow);
+}
+.docIcon { width: 32px; height: 32px; border-radius: 8px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.docInfo { flex: 1; min-width: 0; }
+.docName { font-size: 13px; font-weight: 600; color: var(--text); }
+.docMeta { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.docUploader { font-size: 10px; color: var(--text3); margin-top: 1px; }
+.typeBadge { font-size: 10px; font-weight: 600; background: var(--surface2); color: var(--text2); border-radius: 6px; padding: 2px 7px; flex-shrink: 0; }
+.docActions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }

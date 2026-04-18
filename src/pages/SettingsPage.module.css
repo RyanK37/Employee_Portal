@@ -1,0 +1,47 @@
+.page { display: flex; flex-direction: column; gap: 16px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.themeRow { display: flex; gap: 8px; margin-bottom: 10px; }
+.themeOption {
+  border: 1px solid var(--border-strong);
+  background: var(--surface2);
+  color: var(--text2);
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+.themeOption:hover {
+  background: var(--purple-light);
+  color: var(--purple-dark);
+  border-color: var(--purple-mid);
+}
+.themeOptionActive {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--purple);
+}
+.themeHelp { font-size: 11px; color: var(--text3); }
+
+.prefRow { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.prefRow:last-child { border-bottom: none; }
+.prefLabel { font-size: 13px; font-weight: 500; color: var(--text); }
+.prefDesc  { font-size: 11px; color: var(--text3); margin-top: 2px; }
+.toggle { width: 34px; height: 19px; border-radius: 10px; background: var(--border-strong); display: flex; align-items: center; padding: 2px; cursor: pointer; transition: all 0.2s; justify-content: flex-start; flex-shrink: 0; }
+.on { background: var(--purple); justify-content: flex-end; }
+.knob { width: 15px; height: 15px; border-radius: 50%; background: #fff; }
+
+.mbtiRow { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.mbtiGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; }
+.typeItem { padding: 5px 4px; border-radius: 7px; border: 1px solid var(--border-strong); font-size: 11px; font-weight: 600; text-align: center; cursor: pointer; color: var(--text2); transition: all 0.12s; }
+.typeItem:hover { background: var(--purple-light); color: var(--purple); border-color: var(--purple-mid); }
+.typeActive { font-weight: 700; }
+
+.pwForm { display: flex; flex-direction: column; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: 12px; font-weight: 500; color: var(--text2); }
+.success { background: var(--green-light); border: 1px solid color-mix(in srgb, var(--green) 28%, var(--border)); border-radius: var(--radius); padding: 8px 12px; font-size: 12px; color: var(--green); margin-bottom: 10px; }
+.error   { background: var(--red-light);   border: 1px solid color-mix(in srgb, var(--red) 28%, var(--border)); border-radius: var(--radius); padding: 8px 12px; font-size: 12px; color: var(--red);   margin-bottom: 10px; }
+
+@media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,43 @@
+.page { display: flex; flex-direction: column; gap: 16px; }
+.toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filterBtn {
+  padding: 5px 12px; border-radius: 20px; font-size: 12px;
+  border: 1px solid var(--border-strong); background: var(--surface);
+  color: var(--text2); cursor: pointer; transition: all 0.12s;
+}
+.filterBtn:hover { background: var(--purple-light); }
+.filterActive { background: var(--purple) !important; color: #fff !important; border-color: var(--purple) !important; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 16px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 4px; box-shadow: var(--shadow);
+  transition: box-shadow 0.15s, transform 0.12s;
+  cursor: default;
+}
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.cardMe { border-color: var(--purple-mid); border-width: 1.5px; }
+
+.cardAvatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  margin-bottom: 4px; flex-shrink: 0;
+}
+.cardName { font-size: 13px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 5px; }
+.cardRole { font-size: 11px; color: var(--text2); }
+.cardOffice { font-size: 11px; color: var(--text3); }
+.cardBadges { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.mbtiDesc { font-size: 10px; color: var(--text3); margin-top: 2px; }
+.youBadge {
+  font-size: 9px; background: var(--purple-light); color: var(--purple);
+  border-radius: 6px; padding: 1px 5px; font-weight: 600;
+}
+.empty { grid-column: 1/-1; text-align: center; color: var(--text3); padding: 40px 0; font-size: 13px; }

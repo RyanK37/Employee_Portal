@@ -1,21 +1,14 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
   "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "cleanUrls": true,
-    "rewrites": [
-      { "source": "/",        "destination": "/html/index.html" },
-      { "source": "/index.html", "destination": "/html/index.html" },
-      { "source": "/feed",    "destination": "/html/feed.html" },
-      { "source": "/login",   "destination": "/html/login.html" },
-      { "source": "/signup",  "destination": "/html/signup.html" },
-      { "source": "/profile", "destination": "/html/profile.html" },
-      { "source": "/chat",    "destination": "/html/chat.html" }
-    ]
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [{ "source": "**", "destination": "/index.html" }]
   }
 }
-

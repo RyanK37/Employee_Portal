@@ -1,0 +1,67 @@
+.page { display: flex; flex-direction: column; gap: 18px; }
+
+.tabs { display: flex; gap: 6px; }
+.tab {
+  padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  border: 1px solid var(--border-strong); background: var(--surface);
+  color: var(--text2); cursor: pointer; transition: all 0.12s;
+}
+.tab:hover { background: var(--purple-light); color: var(--purple); }
+.tabActive { background: var(--purple) !important; color: #fff !important; border-color: var(--purple) !important; }
+
+.formWrap { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.formTitle { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+.successMsg {
+  background: var(--green-light); border: 1px solid color-mix(in srgb, var(--green) 28%, var(--border));
+  border-radius: var(--radius); padding: 9px 13px;
+  font-size: 13px; color: var(--green); margin-bottom: 14px;
+}
+.errorMsg {
+  background: color-mix(in srgb, var(--red) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--red) 28%, var(--border));
+  border-radius: var(--radius);
+  padding: 9px 13px;
+  font-size: 13px;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+.form { display: flex; flex-direction: column; gap: 13px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 12px; font-weight: 500; color: var(--text2); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.checkRow { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); cursor: pointer; }
+.formFooter { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+.daysCalc { font-size: 12px; color: var(--text3); }
+
+.balanceCard {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px;
+  box-shadow: var(--shadow);
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+}
+.balanceItem { text-align: center; padding: 8px; }
+.balanceItem + .balanceItem { border-left: 1px solid var(--border); }
+.balanceVal { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--purple); }
+.balanceLbl { font-size: 12px; color: var(--text3); margin-top: 3px; }
+
+.listWrap { display: flex; flex-direction: column; }
+.sectionHead { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 12px; }
+.empty { font-size: 13px; color: var(--text3); padding: 24px 0; text-align: center; }
+
+.leaveRowInner { display: flex; align-items: flex-start; gap: 12px; }
+.leaveAvatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.leaveInfo { flex: 1; min-width: 0; }
+.leaveName { font-size: 13px; font-weight: 600; color: var(--text); }
+.leaveMeta { font-size: 12px; color: var(--text2); margin-top: 2px; }
+.leaveDesc { font-size: 11px; color: var(--text3); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.leaveActions { display: flex; gap: 6px; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .formWrap { grid-template-columns: 1fr; }
+  .leaveRowInner { flex-wrap: wrap; }
+  .leaveActions { width: 100%; justify-content: flex-end; }
+}
