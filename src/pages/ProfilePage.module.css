@@ -1,0 +1,157 @@
+.page { display: flex; flex-direction: column; gap: 16px; }
+
+.hero {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 22px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; box-shadow: var(--shadow);
+}
+.heroLeft { display: flex; align-items: flex-start; gap: 16px; }
+.avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--purple-light); color: var(--purple-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  flex-shrink: 0; position: relative;
+}
+.onlineDot {
+  position: absolute; bottom: 2px; right: 2px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--teal); border: 2px solid var(--surface);
+}
+.heroInfo { flex: 1; }
+.heroName { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.heroRole { font-size: 13px; color: var(--text2); margin-bottom: 8px; }
+.heroBadges { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.heroActions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.savedMsg { font-size: 12px; color: var(--green); font-weight: 500; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.infoTable { width: 100%; border-collapse: collapse; }
+.infoTable tr { border-bottom: 1px solid var(--border); }
+.infoTable tr:last-child { border-bottom: none; }
+.infoKey { font-size: 12px; color: var(--text3); padding: 7px 0; width: 110px; vertical-align: middle; }
+.infoVal { font-size: 12px; color: var(--text); font-weight: 500; padding: 7px 0; vertical-align: middle; }
+
+.mbtiHero { text-align: center; }
+.mbtiType { font-family: var(--font-display); font-size: 42px; font-weight: 800; letter-spacing: 4px; }
+.mbtiName { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.mbtiGroup { font-size: 12px; font-weight: 500; margin-top: 3px; }
+
+.moodGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.moodBtn {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 4px; border-radius: 8px; border: 1px solid transparent;
+  background: var(--surface2); cursor: pointer; transition: all 0.12s;
+}
+.moodBtn:hover { background: var(--purple-light); border-color: var(--purple-mid); }
+.moodBtnActive { background: var(--purple-light) !important; border-color: var(--purple) !important; }
+.moodName { font-size: 9px; color: var(--text3); text-align: center; }
+
+.prefRow {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+}
+.prefRow:last-child { border-bottom: none; }
+.prefLabel { font-size: 13px; color: var(--text); font-weight: 500; }
+.prefDesc  { font-size: 11px; color: var(--text3); margin-top: 1px; }
+.toggle {
+  width: 34px; height: 19px; border-radius: 10px;
+  background: var(--border-strong); display: flex;
+  align-items: center; padding: 2px; cursor: pointer;
+  transition: background 0.2s; flex-shrink: 0;
+  justify-content: flex-start;
+}
+.toggleOn { background: var(--purple); justify-content: flex-end; }
+.toggleKnob {
+  width: 15px; height: 15px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.actionRow {
+  width: 100%;
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.1s; border-radius: 4px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background: transparent;
+  text-align: left;
+}
+.actionRow:last-child { border-bottom: none; }
+.actionRow:hover .actionLabel { color: var(--purple); }
+.actionLabel { flex: 1; font-size: 13px; color: var(--text); }
+.actionMeta { color: var(--text3); font-size: 12px; }
+
+.accountError,
+.accountNotice,
+.accountPanel {
+  margin-top: 12px;
+}
+
+.accountError,
+.accountNotice {
+  border-radius: var(--radius);
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+.accountError {
+  color: var(--red);
+  border: 1px solid color-mix(in srgb, var(--red) 30%, var(--border));
+  background: color-mix(in srgb, var(--red) 10%, var(--surface));
+}
+
+.accountNotice {
+  color: var(--green);
+  border: 1px solid color-mix(in srgb, var(--green) 28%, var(--border));
+  background: color-mix(in srgb, var(--green) 10%, var(--surface));
+}
+
+.accountPanel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: var(--surface2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accountPanelTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.accountField {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.accountField label {
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.accountActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.accountHint {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .stats { grid-template-columns: repeat(2,1fr); }
+  .grid  { grid-template-columns: 1fr; }
+}
