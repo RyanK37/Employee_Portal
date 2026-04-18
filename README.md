@@ -207,3 +207,9 @@ The app expects these Gradio endpoints to be reachable at runtime:
 - `Win02/mbti-predictor`
 
 If those services are unavailable, chat mood prediction and MBTI refresh will fall back gracefully but will not produce new predictions.
+
+## The modals are live at Hugging Face's space : 
+```bash
+Emotion classifier : https://huggingface.co/spaces/Win02/emotion-classifier
+MBTI classifier : https://huggingface.co/spaces/Win02/mbti-predictor
+```
