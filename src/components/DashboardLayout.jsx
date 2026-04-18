@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Outlet, NavLink, useNavigate } from 'react-router-dom'
+import { Outlet, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useAuth } from '../hooks/useAuth'
@@ -24,13 +24,17 @@ const ACCOUNT_NAV = [
 ]
 
 const LAST_SEEN_MBTI_KEY_PREFIX = 'fdm-last-seen-mbti:'
+const MOBILE_BREAKPOINT = 900
 
 export default function DashboardLayout() {
   const { user, profile } = useAuth()
   const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
+  const location = useLocation()
   const [loggingOut, setLoggingOut] = useState(false)
   const [mbtiChangeModal, setMbtiChangeModal] = useState(null)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(() => window.innerWidth <= MOBILE_BREAKPOINT)
 
   useWeeklyMbtiRefresh(user, profile)
 
@@ -51,6 +55,22 @@ export default function DashboardLayout() {
 
     window.localStorage.setItem(storageKey, currentMbti)
   }, [profile?.mbti, profile?.mbtiSource, user?.uid])
+
+  useEffect(() => {
+    setIsMobileNavOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    function handleResize() {
+      const mobile = window.innerWidth <= MOBILE_BREAKPOINT
+      setIsMobileViewport(mobile)
+      if (!mobile) setIsMobileNavOpen(false)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const mbtiGroup = getMbtiGroup(profile?.mbti)
   const previousMbtiGroup = getMbtiGroup(mbtiChangeModal?.previousMbti)
@@ -86,7 +106,7 @@ export default function DashboardLayout() {
                 style={previousMbtiGroup ? { background: previousMbtiGroup.bg, color: previousMbtiGroup.text } : {}}>
                 {mbtiChangeModal.previousMbti}
               </span>
-              <span className={styles.mbtiArrow}>-&gt;</span>
+              <span className={styles.mbtiArrow}>{'->'}</span>
               <span
                 className="mbti-badge"
                 style={mbtiGroup ? { background: mbtiGroup.bg, color: mbtiGroup.text } : {}}>
@@ -102,13 +122,32 @@ export default function DashboardLayout() {
         </div>
       )}
 
-      <aside className={styles.sidebar}>
+      {isMobileViewport && isMobileNavOpen && (
+        <button
+          type="button"
+          className={styles.mobileBackdrop}
+          onClick={() => setIsMobileNavOpen(false)}
+          aria-label="Close navigation"
+        />
+      )}
+
+      <aside
+        className={styles.sidebar + (isMobileNavOpen ? ' ' + styles.sidebarOpen : '')}
+        aria-hidden={isMobileViewport && !isMobileNavOpen}>
         <div className={styles.logo}>
           <div className={styles.logoMark}>F</div>
           <div>
             <div className={styles.logoName}>FDM Group</div>
             <div className={styles.logoSub}>Employee Portal</div>
           </div>
+          <button
+            type="button"
+            className={styles.mobileCloseBtn}
+            onClick={() => setIsMobileNavOpen(false)}
+            aria-label="Close navigation"
+            style = {{fontSize: 18}}>
+            x
+          </button>
         </div>
 
         <nav className={styles.nav}>
@@ -119,6 +158,7 @@ export default function DashboardLayout() {
                 key={item.to}
                 to={item.to}
                 end={item.to === '/'}
+                onClick={() => setIsMobileNavOpen(false)}
                 className={({ isActive }) => styles.navItem + (isActive ? ' ' + styles.navActive : '')}>
                 <span className={styles.navIcon}>{item.icon}</span>
                 {item.label}
@@ -132,6 +172,7 @@ export default function DashboardLayout() {
               <NavLink
                 key={item.to}
                 to={item.to}
+                onClick={() => setIsMobileNavOpen(false)}
                 className={({ isActive }) => styles.navItem + (isActive ? ' ' + styles.navActive : '')}>
                 <span className={styles.navIcon}>{item.icon}</span>
                 {item.label}
@@ -140,7 +181,12 @@ export default function DashboardLayout() {
           </div>
         </nav>
 
-        <div className={styles.userCard} onClick={() => navigate('/profile')}>
+        <div
+          className={styles.userCard}
+          onClick={() => {
+            setIsMobileNavOpen(false)
+            navigate('/profile')
+          }}>
           <div className={styles.userAvatar} style={mbtiGroup ? { background: mbtiGroup.bg, color: mbtiGroup.text } : {}}>
             {initials}
             <div className={styles.onlineDot} />
@@ -159,7 +205,16 @@ export default function DashboardLayout() {
 
       <div className={styles.main}>
         <header className={styles.topbar}>
-          <div className={styles.topbarLeft} />
+          <div className={styles.topbarLeft}>
+            <button
+              type="button"
+              className={styles.mobileMenuBtn}
+              onClick={() => setIsMobileNavOpen(open => !open)}
+              aria-label={isMobileNavOpen ? 'Close navigation' : 'Open navigation'}
+              aria-expanded={isMobileNavOpen}>
+              ≡
+            </button>
+          </div>
           <div className={styles.topbarRight}>
             <button className={styles.themeBtn} onClick={toggleTheme} title="Toggle theme">
               {theme === 'dark' ? 'Light mode' : 'Dark mode'}

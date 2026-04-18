@@ -1,4 +1,10 @@
-.page { display: flex; flex-direction: column; gap: 18px; }
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
 
 .greet {
   font-size: 15px; color: var(--text2);
@@ -7,18 +13,42 @@
 .greet strong { color: var(--text); font-size: 17px; font-family: var(--font-display); }
 .date { font-size: 12px; color: var(--text3); margin-left: auto; }
 
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
 
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
+.grid > * {
+  min-width: 0;
+}
 .grid > *:first-child { grid-column: 1 / -1; }
 
 .sectionRow {
   display: flex; justify-content: space-between; align-items: center;
+  gap: 12px;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 .sectionTitle { font-size: 14px; font-weight: 600; color: var(--text); font-family: var(--font-display); }
+.sectionAction { flex-shrink: 0; }
 
-.annList { display: flex; flex-direction: column; gap: 8px; }
+.annList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
 .emptyCard {
   background: var(--surface);
   border: 1px dashed color-mix(in srgb, var(--amber) 34%, var(--border));
@@ -28,11 +58,144 @@
 .emptyTitle { font-size: 13px; font-weight: 700; color: var(--text); }
 .emptySub  { font-size: 12px; color: var(--text2); margin-top: 4px; }
 
-.list { display: flex; flex-direction: column; }
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
 .empty { font-size: 13px; color: var(--text3); padding: 12px 0; text-align: center; }
+
+.stackCard {
+  margin-bottom: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.messageAvatar {
+  width: 28px;
+  height: 28px;
+  font-size: 10px;
+}
+
+.infoBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.titleLine {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.metaLine {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 2px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.descLine {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.messageCard {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+}
+
+.messageBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.messageSender {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.messageText {
+  font-size: 11px;
+  color: var(--text3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.messageMood {
+  flex-shrink: 0;
+}
 
 @media (max-width: 900px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .grid { grid-template-columns: 1fr; }
   .grid > *:first-child { grid-column: 1; }
+
+  .descLine,
+  .messageText {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .messageCard {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionAction {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .messageCard {
+    flex-wrap: wrap;
+  }
+
+  .messageMood {
+    margin-left: 37px;
+  }
 }

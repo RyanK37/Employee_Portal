@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.mobileBackdrop {
+  display: none;
+}
+
 .mbtiOverlay {
   position: fixed;
   inset: 0;
@@ -77,6 +81,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
+  z-index: 11;
 }
 
 .logo {
@@ -105,6 +111,18 @@
 
 .logoName { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text); }
 .logoSub { font-size: 10px; color: var(--text3); margin-top: 1px; }
+
+.mobileCloseBtn {
+  display: none;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+}
 
 .nav {
   flex: 1;
@@ -219,6 +237,19 @@
 .topbarLeft { flex: 1; }
 .topbarRight { display: flex; align-items: center; gap: 10px; }
 
+.mobileMenuBtn {
+  display: none;
+  border: 1px solid var(--border-strong);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .themeBtn {
   border: 1px solid var(--border-strong);
   background: var(--surface2);
@@ -301,4 +332,73 @@
   overflow-y: auto;
   padding: 20px 24px;
   animation: fadeIn 0.25s ease;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(280px, 82vw);
+    max-width: 280px;
+    box-shadow: 0 24px 60px rgba(17, 27, 21, 0.22);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .mobileBackdrop {
+    position: fixed;
+    inset: 0;
+    display: block;
+    border: none;
+    background: rgba(17, 27, 21, 0.38);
+    z-index: 10;
+  }
+
+  .mobileCloseBtn {
+    display: block;
+  }
+
+  .main {
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    padding: 0 16px;
+  }
+
+  .topbarLeft {
+    display: flex;
+    align-items: center;
+  }
+
+  .topbarRight {
+    gap: 8px;
+  }
+
+  .mobileMenuBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    overflow: visible;
+    padding: 16px;
+  }
 }

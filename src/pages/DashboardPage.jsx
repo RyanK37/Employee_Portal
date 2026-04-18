@@ -204,7 +204,7 @@ export default function DashboardPage() {
           <div className={styles.sectionRow}>
             <span className={styles.sectionTitle}>Announcements</span>
             <button
-              className="btn secondary sm"
+              className={'btn secondary sm ' + styles.sectionAction}
               onClick={() => navigate('/chat', { state: { room: 'announcements' } })}>
               {canPostAnnouncements ? 'Manage' : 'Open channel'}
             </button>
@@ -235,7 +235,7 @@ export default function DashboardPage() {
         <div>
           <div className={styles.sectionRow}>
             <span className={styles.sectionTitle}>Pending leave</span>
-            <button className="btn secondary sm" onClick={() => navigate('/leave')}>Manage</button>
+            <button className={'btn secondary sm ' + styles.sectionAction} onClick={() => navigate('/leave')}>Manage</button>
           </div>
           <div className={styles.list}>
             {pendingLeave.length === 0 && <div className={styles.empty}>No pending requests</div>}
@@ -248,7 +248,7 @@ export default function DashboardPage() {
         <div>
           <div className={styles.sectionRow}>
             <span className={styles.sectionTitle}>Recent messages</span>
-            <button className="btn secondary sm" onClick={() => navigate('/chat')}>Open</button>
+            <button className={'btn secondary sm ' + styles.sectionAction} onClick={() => navigate('/chat')}>Open</button>
           </div>
           <div className={styles.list}>
             {recentMessages.length === 0 && <div className={styles.empty}>No recent messages</div>}
@@ -265,39 +265,25 @@ export default function DashboardPage() {
 function LeaveCard({ req }) {
   const group = req.requesterMbti ? getMbtiGroup(req.requesterMbti) : null
   return (
-    <div className="card" style={{ marginBottom: 8 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{
-          width: 32,
-          height: 32,
-          borderRadius: '50%',
-          background: group?.bg || 'var(--surface2)',
-          color: group?.text || 'var(--text2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontWeight: 600,
-          fontSize: 11,
-          flexShrink: 0,
-        }}>
+    <div className={'card ' + styles.stackCard}>
+      <div className={styles.infoRow}>
+        <div
+          className={styles.avatar}
+          style={{
+            background: group?.bg || 'var(--surface2)',
+            color: group?.text || 'var(--text2)',
+          }}>
           {getInitials(req.requesterName)}
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>
+        <div className={styles.infoBody}>
+          <div className={styles.titleLine}>
             {toDisplayText(req.requesterName, 'Unknown')}
-            <span className="pill amber" style={{ marginLeft: 6 }}>Pending</span>
+            <span className="pill amber">Pending</span>
           </div>
-          <div style={{ fontSize: 11, color: 'var(--text2)' }}>
+          <div className={styles.metaLine}>
             {toDisplayText(req.type, 'Leave')} · {formatDateValue(req.startDate)} to {formatDateValue(req.endDate)}
           </div>
-          <div style={{
-            fontSize: 11,
-            color: 'var(--text3)',
-            marginTop: 2,
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-          }}>
+          <div className={styles.descLine}>
             {toDisplayText(req.description, 'No description')}
           </div>
         </div>
@@ -311,32 +297,26 @@ function MessagePreview({ msg, currentUid }) {
   const group = msg.senderMbti ? getMbtiGroup(msg.senderMbti) : null
   const showMood = Boolean(msg.mood) && msg.showMoodOnMessages !== false
   const emoji = showMood ? getEmotionEmoji(msg.mood) : null
+
   return (
-    <div className="card" style={{ marginBottom: 8, display: 'flex', alignItems: 'center', gap: 9 }}>
-      <div style={{
-        width: 28,
-        height: 28,
-        borderRadius: '50%',
-        background: group?.bg || 'var(--surface2)',
-        color: group?.text || 'var(--text2)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 10,
-        fontWeight: 600,
-        flexShrink: 0,
-      }}>
+    <div className={'card ' + styles.messageCard}>
+      <div
+        className={styles.avatar + ' ' + styles.messageAvatar}
+        style={{
+          background: group?.bg || 'var(--surface2)',
+          color: group?.text || 'var(--text2)',
+        }}>
         {getInitials(msg.senderName)}
       </div>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text)' }}>
+      <div className={styles.messageBody}>
+        <div className={styles.messageSender}>
           {isMe ? 'You' : toDisplayText(msg.senderName, 'Unknown')}
         </div>
-        <div style={{ fontSize: 11, color: 'var(--text3)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+        <div className={styles.messageText}>
           {toDisplayText(msg.text, '[empty message]')}
         </div>
       </div>
-      {showMood && <span className="mood-badge">{emoji}</span>}
+      {showMood && <span className={'mood-badge ' + styles.messageMood}>{emoji}</span>}
     </div>
   )
 }

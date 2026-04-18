@@ -5,6 +5,8 @@
   border-radius: var(--radius-lg);
   padding: 14px 16px;
   box-shadow: var(--shadow);
+  width: 100%;
+  min-width: 0;
 }
 
 .compact {
@@ -16,6 +18,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+  min-width: 0;
 }
 
 .eyebrow {
@@ -40,6 +43,7 @@
   margin-top: 6px;
   line-height: 1.55;
   white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 .meta {
@@ -64,6 +68,7 @@
 .reactions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px;
 }
@@ -80,6 +85,7 @@
   font-size: 11px;
   font-weight: 600;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
+  min-width: 0;
 }
 
 .reactionBtn:hover {
@@ -96,4 +102,23 @@
 
 .count {
   min-width: 10px;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 12px;
+  }
+
+  .compact {
+    padding: 10px 12px;
+  }
+
+  .reactions {
+    gap: 6px;
+  }
+
+  .reactionBtn {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
