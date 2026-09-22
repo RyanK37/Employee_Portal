@@ -213,3 +213,8 @@ If those services are unavailable, chat mood prediction and MBTI refresh will fa
 Emotion classifier : https://huggingface.co/spaces/Win02/emotion-classifier
 
 MBTI classifier : https://huggingface.co/spaces/Win02/mbti-predictor
+
+## The Employee Portal
+https://employee-portal-v2-bbe68.web.app/
+
+
