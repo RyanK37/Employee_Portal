@@ -354,7 +354,7 @@ export default function ReportsPage() {
           <section className={`card ${styles.card} ${styles.spanFull}`}>
             <CardHeader
               title="Filtered leave detail"
-              subtitle="Latest leave requests behind the charts so the page stays actionable, not just decorative."
+              subtitle="Latest leave requests behind the charts."
             />
             {reportData.leave.length > 0 ? (
               <div className={styles.tableWrap}>

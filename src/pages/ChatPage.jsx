@@ -208,7 +208,7 @@ export default function ChatPage() {
         createdAt: serverTimestamp(),
       }
 
-      if (announcementRoomActive) {
+      if (announcementRoomActiv
         payload.announcementTitle = announcementTitle
         payload.announcementDescription = announcementDescription
         payload.likedBy = []

@@ -482,7 +482,7 @@ export default function ProfilePage() {
               <div className={styles.accountPanelTitle}>Two-factor authentication</div>
               <div className={styles.accountHint}>Current sign-in providers: {providerList}</div>
               <div className={styles.accountHint}>
-                Two-factor enrolment is not implemented in this build yet. This panel now shows current account security status instead of being a dead row.
+                Two-factor enrolment is not implemented in this build yet.
               </div>
               <div className={styles.accountActions}>
                 <button className="btn secondary sm" type="button" onClick={() => setAccountPanel('')}>Close</button>

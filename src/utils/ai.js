@@ -10,13 +10,6 @@ async function getEmotionClient() {
   return emotionClient
 }
 
-async function getMbtiClient() {
-  if (!mbtiClient) {
-    mbtiClient = await Client.connect('Win02/mbti-predictor')
-  }
-  return mbtiClient
-}
-
 export async function predictEmotion(text) {
   try {
     if (!text || text.trim().length < 3) return null
@@ -35,6 +28,13 @@ export async function predictEmotion(text) {
     console.warn('Emotion API error:', err)
     return null
   }
+}
+
+async function getMbtiClient() {
+  if (!mbtiClient) {
+    mbtiClient = await Client.connect('Win02/mbti-predictor')
+  }
+  return mbtiClient
 }
 
 export async function predictMBTI(text) {
