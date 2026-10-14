@@ -2,6 +2,10 @@
 
 React + Firebase employee portal with leave management, chat, reports, payroll, documents, and AI-assisted mood/MBTI features.
 
+## Final Project Report
+
+The final project report prepared as part of my degree is available here: [Final Project Report (Word document)](reports/deployment_report.docx).
+
 ## Stack
 
 - React 18
@@ -77,6 +81,8 @@ React + Firebase employee portal with leave management, chat, reports, payroll, 
 
 ```text
 fdm-portal/
+├── reports/
+│   └── deployment_report.docx
 ├── src/
 │   ├── components/
 │   │   ├── AnnouncementCard.jsx
