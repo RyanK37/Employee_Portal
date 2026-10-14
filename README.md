@@ -4,7 +4,7 @@ React + Firebase employee portal with leave management, chat, reports, payroll, 
 
 ## Final Project Report
 
-The final project report prepared as part of my degree is available here: [Final Project Report (Word document)](reports/deployment_report.docx).
+The final project report prepared as part of my degree is available here: [Final Project Report](reports/deployment_report.pdf).
 
 ## Stack
 
