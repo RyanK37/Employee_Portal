@@ -1,6 +1,15 @@
+# Dependencies and Vite build/cache files
 node_modules/
 dist/
+.vite/
+*.local
+
+# Firebase local cache and debug logs
 .firebase/
+firebase-debug.log*
+firestore-debug.log*
+database-debug.log*
+ui-debug.log*
 
 # Local environment files
 .env
@@ -13,8 +22,32 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Python environments and notebook caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+**/.cache/huggingface/
+
+# Generated classifier checkpoints, exports, and predictions
+go-emotions-28/
+go-emotions-28-final/
+go-emotions-28-v2/
+go-emotions-28-final.zip
+distilbert_mbti_axes_chunked/
+distilbert_mbti_axes_chunked_best/
+distilbert_mbti_axes_chunked_best.zip
+test_user_level_predictions.csv
+
 # OS/editor files
 .DS_Store
 Thumbs.db
+Desktop.ini
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+/docs
